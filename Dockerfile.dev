@@ -1,0 +1,20 @@
+# ---- Release ----
+FROM node:14.15-alpine AS release
+
+RUN apk --no-cache add curl
+
+USER node
+RUN mkdir /home/node/app
+WORKDIR /home/node/app
+
+EXPOSE 8080
+
+ARG NODE_ENV
+CMD yarn start
+
+COPY --chown=node:node app/package.json .
+COPY --chown=node:node app/yarn.lock .
+
+RUN yarn
+
+COPY --chown=node:node app ./
