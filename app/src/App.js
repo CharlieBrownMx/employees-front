@@ -1,10 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
-import React, { useState, useEffect } from 'react';
-import Employees from './components/Employee';
-import Pagination from './components/Pagination';
-import axios from 'axios';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import Employees from "./components/Employee";
+import Pagination from "./components/Pagination";
+import axios from "axios";
+import "./App.css";
 
 const App = () => {
   const [employees, setEmployees] = useState([]);
@@ -15,7 +15,7 @@ const App = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
-      const res = await axios.get('http://localhost:3000/employeesExample');
+      const res = await axios.get("http://localhost:3000/employeesExample");
       setEmployees(res.data.data);
       setLoading(false);
     };
@@ -26,14 +26,20 @@ const App = () => {
   // Get current employees
   const indexOfLastEmployee = currentPage * employeesPerPage;
   const indexOfFirstEmployee = indexOfLastEmployee - employeesPerPage;
-  const currentEmployees = employees.slice(indexOfFirstEmployee, indexOfLastEmployee);
+  const currentEmployees = employees.slice(
+    indexOfFirstEmployee,
+    indexOfLastEmployee
+  );
 
   // Change page
-  const paginate = pageNumber => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className='container mt-5'>
-      <h1 className='text-primary mb-3'>Javascript Fullstack - Code Challenge <img src={logo} className="App-logo" alt="logo" /></h1>
+    <div className="container mt-5">
+      <h1 className="text-primary mb-3">
+        Javascript Fullstack - Code Challenge{" "}
+        <img src={logo} className="App-logo" alt="logo" />
+      </h1>
       <Employees employees={currentEmployees} loading={loading} />
       <Pagination
         employeesPerPage={employeesPerPage}

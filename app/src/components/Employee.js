@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Employees = ({ employees, loading }) => {
   if (loading) {
@@ -18,14 +18,14 @@ const Employees = ({ employees, loading }) => {
         </tr>
       </thead>
       <tbody>
-        {employees.map(employee => (
+        {employees.map((employee) => (
           <tr key={employee.emp_no}>
             <td>{employee.emp_no}</td>
-            <td>{ employee.birth_date }</td>
-            <td>{ employee.first_name }</td>
-            <td>{ employee.last_name }</td>
-            <td>{ employee.gender }</td>
-            <td>{ employee.hire_date }</td>
+            <td>{employee.birth_date}</td>
+            <td>{employee.first_name}</td>
+            <td>{employee.last_name}</td>
+            <td>{employee.gender}</td>
+            <td>{employee.hire_date}</td>
           </tr>
         ))}
       </tbody>
